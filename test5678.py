@@ -10,10 +10,10 @@ import os
 
 warnings.filterwarnings('ignore')
 
-CLOVA_INVOKE_URL = 'https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b'
-CLOVA_SECRET_KEY = 'ac9d86fd540d41e29b59d0ab591ffc02'
-AUDIO_FILE_PATH = r"C:\Users\coded\Desktop\sample\test_Korean_audio.mp3"
-OUTPUT_VIDEO_PATH = "speech_analysis_result.mp4"
+#CLOVA_INVOKE_URL = 'https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b'
+#CLOVA_SECRET_KEY = 'ac9d86fd540d41e29b59d0ab591ffc02'
+#AUDIO_FILE_PATH = r"C:\Users\coded\Desktop\sample\test_Korean_audio.mp3"
+#OUTPUT_VIDEO_PATH = "speech_analysis_result.mp4"
 
 class NaverClovaSTT:
     def __init__(self, invoke_url, secret_key):
@@ -157,4 +157,5 @@ if __name__ == '__main__':
                 print(f"진행률: {i}/{TOTAL_FRAMES} frames")
 
     plt.close()
+
     print(f"저장이 완료되었습니다: {os.path.abspath(OUTPUT_VIDEO_PATH)}")
