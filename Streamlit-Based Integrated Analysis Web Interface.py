@@ -112,5 +112,5 @@ def main():
         st.warning("파일을 업로드해주세요.")
 
 if __name__ == "__main__":
-
     main()
+
