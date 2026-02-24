@@ -12,8 +12,8 @@ import threading
 warnings.filterwarnings('ignore')
 
 # API / File
-CLOVA_INVOKE_URL = 'https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b'
-CLOVA_SECRET_KEY = 'ac9d86fd540d41e29b59d0ab591ffc02'
+# CLOVA_INVOKE_URL = 'https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b'
+# CLOVA_SECRET_KEY = 'ac9d86fd540d41e29b59d0ab591ffc02'
 AUDIO_FILE_PATH = r"C:\Users\coded\Downloads\Korean_sample.mp3"
 
 class NaverClovaSTT:
@@ -172,4 +172,5 @@ if __name__ == '__main__':
     # Start animation (애니메이션 실행)
     animation_controller = FuncAnimation(fig, update_animation, interval=30, blit=True, cache_frame_data=False)
     plt.tight_layout()
+
     plt.show()
