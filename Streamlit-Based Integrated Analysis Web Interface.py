@@ -114,3 +114,9 @@ def main():
 if __name__ == "__main__":
     main()
 
+# [실행 방법 안내]
+# 이 파일은 일반적인 'python 파일명.py'로 실행하면 ScriptRunContext 오류가 발생합니다.
+# 반드시 터미널에서 아래 명령어로 실행해야 정상적인 웹 인터페이스가 출력됩니다:
+# ex）> streamlit run "Streamlit-Based Integrated Analysis Web Interface.py"
+
+
