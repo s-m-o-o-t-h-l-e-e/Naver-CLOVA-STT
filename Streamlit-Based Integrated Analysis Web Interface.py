@@ -9,8 +9,8 @@ import tempfile
 import os
 import time
 
-# CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b/recognizer/upload"
-# CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
+CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b/recognizer/upload"
+CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
 
 st.set_page_config(page_title="Naver CLOVA STT", layout="wide")
 
@@ -118,4 +118,5 @@ if __name__ == "__main__":
 # 일반적인 'python 파일명.py'로 실행하면 ScriptRunContext 오류가 발생합니다.
 # 반드시 터미널에서 아래 명령어로 실행해야 정상적인 웹 인터페이스가 출력됩니다.
 # ex）> streamlit run "Streamlit-Based Integrated Analysis Web Interface.py"
+
 
