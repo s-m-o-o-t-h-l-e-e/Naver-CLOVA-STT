@@ -16,13 +16,11 @@ CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
 st.set_page_config(page_title="Naver CLOVA STT Research", layout="wide")
 
 def format_time_srt(ms):
-    """밀리초를 SRT 시간 포맷(00:00:00,000)으로 변환"""
     td = time.gmtime(ms / 1000)
     milli = int(ms % 1000)
     return f"{time.strftime('%H:%M:%S', td)},{milli:03d}"
 
 def format_time_vtt(ms):
-    """밀리초를 VTT 시간 포맷(00:00:00.000)으로 변환"""
     td = time.gmtime(ms / 1000)
     milli = int(ms % 1000)
     return f"{time.strftime('%H:%M:%S', td)}.{milli:03d}"
@@ -130,3 +128,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
