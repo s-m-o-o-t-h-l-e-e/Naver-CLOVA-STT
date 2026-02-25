@@ -10,7 +10,6 @@ import tempfile
 import os
 import time
 
-# --- 설정 및 API 정보 ---
 CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b/recognizer/upload"
 CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
 
@@ -55,9 +54,8 @@ def main():
     uploaded_file = st.file_uploader("분석할 오디오 파일(mp3, wav)을 선택하세요", type=["mp3", "wav"])
 
     if uploaded_file is not None:
-        # --- 파일명 추출 로직 ---
         raw_filename = uploaded_file.name
-        base_filename = os.path.splitext(raw_filename)[0] # 확장자 제거한 파일명
+        base_filename = os.path.splitext(raw_filename)[0]
         
         progress_bar = st.progress(0)
         status_text = st.empty()
@@ -87,7 +85,6 @@ def main():
             word_count = len(extracted_text.split())
             speech_rate = word_count / (duration / 60) if duration > 0 else 0
 
-            # 자막 포맷 생성
             srt_lines, vtt_lines = [], ["WEBVTT\n"]
             for i, seg in enumerate(segments):
                 start, end, text = seg['start'], seg['end'], seg['text']
@@ -97,7 +94,6 @@ def main():
             srt_final = "\n".join(srt_lines)
             vtt_final = "\n".join(vtt_lines)
 
-            # --- [수정] 다운로드 섹션: 파일명 연동 ---
             st.subheader("💾 분석 데이터 내보내기")
             
             tsv_df = pd.DataFrame([{"start": s['start'], "end": s['end'], "text": s['text']} for s in segments])
@@ -106,7 +102,6 @@ def main():
             dl_container = st.container(border=True)
             with dl_container:
                 r1_c1, r1_c2, r1_c3 = st.columns(3)
-                # 오디오 파일명_포맷 형식으로 저장
                 r1_c1.download_button("TXT 다운로드", extracted_text, f"{base_filename}_stt.txt", use_container_width=True)
                 r1_c2.download_button("JSON(원본) 다운로드", json.dumps(res, indent=4, ensure_ascii=False), f"{base_filename}_raw.json", use_container_width=True)
                 r1_c3.download_button("TSV 다운로드", tsv_data, f"{base_filename}_segments.tsv", use_container_width=True)
@@ -133,4 +128,5 @@ def main():
         st.warning("파일을 업로드해주세요.")
 
 if __name__ == "__main__":
+
     main()
