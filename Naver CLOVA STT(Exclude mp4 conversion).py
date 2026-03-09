@@ -12,8 +12,8 @@ import threading
 warnings.filterwarnings('ignore')
 
 # API / File
-# CLOVA_INVOKE_URL = 'https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b'
-# CLOVA_SECRET_KEY = 'ac9d86fd540d41e29b59d0ab591ffc02'
+# CLOVA_INVOKE_URL = 'your_invoke_url'
+# CLOVA_SECRET_KEY = 'your_secret_key'
 AUDIO_FILE_PATH = r"C:\Users\coded\Downloads\Korean_sample.mp3"
 
 class NaverClovaSTT:
@@ -174,3 +174,4 @@ if __name__ == '__main__':
     plt.tight_layout()
 
     plt.show()
+
