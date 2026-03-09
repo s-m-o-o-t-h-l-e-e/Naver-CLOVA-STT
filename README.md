@@ -23,6 +23,8 @@
 <br>
 
 ## 🏗️ 프로젝트 구조
+
+```text
 VoiceAnalysis/
 ├── src/                          # 메인 소스 코드
 │   ├── Streamlit(Include Download).py    # [Web] 풀기능 통합 대시보드 (다운로드 포함)
