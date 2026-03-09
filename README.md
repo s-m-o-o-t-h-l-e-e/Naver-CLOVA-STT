@@ -1,4 +1,4 @@
-#🎙️ AI Voice Analysis & Automation System
+🎙️ AI Voice Analysis & Automation System
 Naver CLOVA STT와 고정밀 음향 분석 알고리즘을 결합하여, 음성 데이터로부터 텍스트와 핵심 음향 지표(Pitch, CPS)를 자동 추출하고 시각화하는 통합 연구 솔루션입니다.
 
 본 프로젝트는 국립공주대학교 SW중심대학사업 인턴십 과정 중 ㈜코드데이원에서 수행된 연구 결과물입니다. 기존의 수동 분석 방식 대비 작업 시간을 약 95% 단축하였으며, 객관적인 정량 데이터를 제공하는 것을 목표로 합니다.
