@@ -36,21 +36,20 @@ VoiceAnalysis/
 └── README.md                     # 프로젝트 가이드라인
 ```
 
-Markdown
 <br>
 
 ## 📡 시스템 아키텍처
 
-> [cite_start]본 시스템은 오디오 입력부터 최종 분석 영상 출력까지 전 과정을 자동화한 파이프라인으로 구성되어 있습니다. [cite: 33, 60] [cite_start]사용자가 파일을 업로드하면 STT 엔진과 음향 분석 엔진이 병렬적으로 구동되어 데이터를 통합합니다. [cite: 66]
+> 본 시스템은 오디오 입력부터 최종 분석 영상 출력까지 전 과정을 자동화한 파이프라인으로 구성되어 있습니다.사용자가 파일을 업로드하면 STT 엔진과 음향 분석 엔진이 병렬적으로 구동되어 데이터를 통합합니다. 
 
 
 
-1. **Input**: [cite_start]사용자가 MP3/WAV 오디오 파일 업로드 [cite: 33]
+1. **Input**: 사용자가 MP3/WAV 오디오 파일 업로드 
 2. **Analysis**: 
-   * **STT**: [cite_start]Naver CLOVA API를 호출하여 고정밀 텍스트 및 구간별 시간 정보(Timestamp) 획득 [cite: 57, 64]
-   * **Acoustic**: [cite_start]PyWorld(Stonemask/Dio) 알고리즘으로 Pitch(Hz) 및 CPS(Speech Rate) 데이터 정밀 산출 [cite: 30, 35]
-3. **Synthesis**: [cite_start]분석 데이터를 FFmpeg를 활용해 프레임 단위로 결합하여 실시간 수치가 포함된 시각화 영상 렌더링 [cite: 33, 60]
-4. **Output**: [cite_start]Streamlit 웹 화면 출력 및 6종의 분석 결과 파일(JSON, CSV, SRT 등) 패키징 제공 [cite: 30, 66]
+   * **STT**: Naver CLOVA API를 호출하여 고정밀 텍스트 및 구간별 시간 정보(Timestamp) 획득 
+   * **Acoustic**: PyWorld(Stonemask/Dio) 알고리즘으로 Pitch(Hz) 및 CPS(Speech Rate) 데이터 정밀 산출
+3. **Synthesis**: 분석 데이터를 FFmpeg를 활용해 프레임 단위로 결합하여 실시간 수치가 포함된 시각화 영상 렌더링
+4. **Output**: Streamlit 웹 화면 출력 및 6종의 분석 결과 파일(JSON, CSV, SRT 등) 패키징 제공
 
 ---
 
@@ -59,21 +58,21 @@ Markdown
 ### STT 모델 비교
 | 모델명 | 한국어 인식 정확도 | 처리 속도 | 타임스탬프 정밀도 | 비고 |
 | :--- | :---: | :---: | :---: | :--- |
-| **Whisper(Local)** | 보통 | 느림 | 낮음 | [cite_start]로컬 자원 소모가 큼 [cite: 53, 61] |
-| **Faster-Whisper** | 높음 | 빠름 | 보통 | [cite_start]GPU 가속(CUDA) 적용 [cite: 54, 63] |
-| **CLOVA Speech** | **최상** | **매우 빠름** | **매우 높음** | [cite_start]**최종 선정 모델** [cite: 56, 59] |
+| **Whisper(Local)** | 보통 | 느림 | 낮음 | 로컬 자원 소모가 큼 |
+| **Faster-Whisper** | 높음 | 빠름 | 보통 | GPU 가속(CUDA) 적용 |
+| **CLOVA Speech** | **최상** | **매우 빠름** | **매우 높음** | **최종 선정 모델** |
 
 ### 정량적 성과 (기존 방식 대비)
-* **분석 소요 시간**: [cite_start]음성 파일 10분 기준 약 3분 → **약 10초 (약 95% 단축)** [cite: 38, 68]
-* **데이터 객관성**: [cite_start]분석가의 주관적 해석을 배제하고 알고리즘 기반의 정량적 수치 제공 [cite: 40, 69]
-* **사용 편의성**: [cite_start]복잡한 라이브러리 숙련 없이 웹 대시보드를 통해 누구나 고도화된 분석 기능 활용 가능 [cite: 70]
+* **분석 소요 시간**: 음성 파일 10분 기준 약 3분 → **약 10초 (약 95% 단축)** 
+* **데이터 객관성**: 분석가의 주관적 해석을 배제하고 알고리즘 기반의 정량적 수치 제공 
+* **사용 편의성**: 복잡한 라이브러리 숙련 없이 웹 대시보드를 통해 누구나 고도화된 분석 기능 활용 가능 
 
 ---
 
 ## 🎨 시각화 가이드 (Visualization)
-* **Waveform (파형)**: `#1DB954` (Green) - [cite_start]실시간 음성 신호의 진폭 시각화 [cite: 29]
-* **Pitch (피치)**: `#FFD700` (Gold) - [cite_start]발화의 높낮이(Hz) 변화 정밀 트래킹 [cite: 29, 35]
-* **Speech Rate (속도)**: `#00BFFF` (Blue) - [cite_start]실시간 CPS(초당 음절 수) 수치 출력 [cite: 30, 35]
+* **Waveform (파형)**: `#1DB954` (Green) - 실시간 음성 신호의 진폭 시각화 
+* **Pitch (피치)**: `#FFD700` (Gold) - 발화의 높낮이(Hz) 변화 정밀 트래킹 
+* **Speech Rate (속도)**: `#00BFFF` (Blue) - 실시간 CPS(초당 음절 수) 수치 출력 
 
 
 
