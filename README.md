@@ -70,13 +70,12 @@ VoiceAnalysis/
 ---
 
 ## 🎨 시각화 가이드 (Visualization)
-* **Waveform (파형)**: `#1DB954` (Green) - 실시간 음성 신호의 진폭 시각화 
-* **Pitch (피치)**: `#FFD700` (Gold) - 발화의 높낮이(Hz) 변화 정밀 트래킹 
-* **Speech Rate (속도)**: `#00BFFF` (Blue) - 실시간 CPS(초당 음절 수) 수치 출력 
+* **Waveform (파형)**: `#1DB954` - 실시간 음성 신호의 진폭 시각화 
+* **Pitch (피치)**: `#FFD700` - 발화의 높낮이(Hz) 변화 정밀 트래킹 
+* **Speech Rate (속도)**: `#00BFFF` - 실시간 CPS(초당 음절 수) 수치 출력 
 
 
 
 ---
 
-**Main Researcher**: 컴퓨터공학과 이승우 (202305129)
-**Affiliation**: ㈜코드데이원 (인턴십 프로젝트)
+**Main Researcher**: 이승우
