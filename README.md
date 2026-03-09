@@ -34,3 +34,5 @@ VoiceAnalysis/
 ├── output/                       # 분석 결과물 저장 폴더 (.mp4, .srt, .json 등)
 ├── requirements.txt              # 핵심 라이브러리 의존성 정의
 └── README.md                     # 프로젝트 가이드라인
+
+시스템 아키텍처Input: 사용자가 MP3/WAV 오디오 파일 업로드 Analysis:STT: Naver CLOVA API를 호출하여 텍스트 및 구간별 시간 정보 획득 Acoustic: PyWorld 알고리즘으로 Pitch 및 CPS 데이터 정밀 산출 Synthesis: 분석 데이터를 프레임 단위로 결합하여 시각화 영상 렌더링 Output: 웹 화면 출력 및 6종의 결과 파일 패키징 제공 
