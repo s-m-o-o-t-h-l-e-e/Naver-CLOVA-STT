@@ -10,7 +10,7 @@ import tempfile
 import os
 import time
 
-CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b"
+CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052"
 CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
 
 st.set_page_config(page_title="Naver CLOVA STT Research", layout="wide")
@@ -128,6 +128,7 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
 
