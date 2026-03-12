@@ -12,6 +12,8 @@ import time
 
 CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b/recognizer/upload"
 CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
+AUDIO_FILE_PATH = r"C:\Users\coded\Desktop\sample\test_Korean_audio.mp3"
+OUTPUT_VIDEO_PATH = "speech_analysis_result.mp4"
 
 st.set_page_config(page_title="Naver CLOVA STT Research", layout="wide")
 
@@ -162,4 +164,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
