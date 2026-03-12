@@ -10,8 +10,8 @@ import tempfile
 import os
 import time
 
-# CLOVA_API_URL = "your_API_key"
-# CLOVA_SECRET_KEY = "your_secret_key"
+CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052e6448f8912170436b"
+CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
 
 st.set_page_config(page_title="Naver CLOVA STT Research", layout="wide")
 
@@ -66,23 +66,59 @@ def main():
             status_text.text("1/3: Naver Clova로 텍스트 추출 중...")
             progress_bar.progress(30)
             
+            stt_start = time.time()
             res = call_clova_stt(tmp_path)
+            stt_end = time.time()
+            
             extracted_text = res.get("text", "")
             segments = res.get("segments", []) 
             
             st.subheader("📝 Clova 텍스트 추출 결과")
+            st.caption(f"⏱️ API 응답 시간: {stt_end - stt_start:.2f}초")
             st.success(extracted_text if extracted_text else "추출된 텍스트가 없습니다.")
             st.divider()
 
             status_text.text("2/3: 음향 데이터 분석 중...")
             progress_bar.progress(60)
+            
             y, sr = librosa.load(tmp_path)
             duration = librosa.get_duration(y=y, sr=sr)
             f0, _, _ = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
+            
             avg_pitch = np.nanmean(f0) if np.any(~np.isnan(f0)) else 0
             word_count = len(extracted_text.split())
             speech_rate = word_count / (duration / 60) if duration > 0 else 0
 
+            col1, col2 = st.columns([1.5, 1])
+
+            with col1:
+                st.subheader("📊 파형 및 피치 분석")
+                fig, ax = plt.subplots(2, 1, figsize=(10, 6))
+                librosa.display.waveshow(y, sr=sr, ax=ax[0], color='skyblue')
+                ax[0].set_title("Waveform")
+                ax[0].set_ylabel("Amplitude")
+
+                ax[1].plot(f0, color='red', linewidth=1.5)
+                ax[1].set_title("Pitch Tracking (Hz)")
+                ax[1].set_ylabel("Frequency (Hz)")
+                plt.tight_layout()
+                st.pyplot(fig)
+
+            with col2:
+                st.subheader("📈 연구 지표 요약")
+                m_container = st.container(border=True)
+                m1, m2 = m_container.columns(2)
+                m1.metric("평균 피치", f"{avg_pitch:.2f} Hz")
+                m2.metric("총 시간", f"{duration:.2f} 초")
+                
+                m3, m4 = m_container.columns(2)
+                m3.metric("발화 속도 (WPM)", f"{speech_rate:.1f}")
+                m4.metric("추출 어절 수", f"{word_count} 개")
+
+            st.divider()
+
+            status_text.text("3/3: 내보내기 파일 생성 중...")
+            
             srt_lines, vtt_lines = [], ["WEBVTT\n"]
             for i, seg in enumerate(segments):
                 start, end, text = seg['start'], seg['end'], seg['text']
@@ -93,7 +129,6 @@ def main():
             vtt_final = "\n".join(vtt_lines)
 
             st.subheader("💾 분석 데이터 내보내기")
-            
             tsv_df = pd.DataFrame([{"start": s['start'], "end": s['end'], "text": s['text']} for s in segments])
             tsv_data = tsv_df.to_csv(index=False, sep='\t').encode('utf-8-sig')
 
@@ -126,12 +161,4 @@ def main():
         st.warning("파일을 업로드해주세요.")
 
 if __name__ == "__main__":
-
     main()
-
-
-
-
-
-
-
