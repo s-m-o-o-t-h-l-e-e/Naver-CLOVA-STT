@@ -10,10 +10,8 @@ import tempfile
 import os
 import time
 
-# 기존 주석 부분을 아래와 같이 변경하세요
-CLOVA_API_URL = "https://clovaspeech-gw.ncloud.com/external/v1/14442/d2150efca70e10fa8b827cf78830d813bed99a299604052"
-CLOVA_SECRET_KEY = "ac9d86fd540d41e29b59d0ab591ffc02"
-
+# CLOVA_API_URL = "your_API_key"
+# CLOVA_SECRET_KEY = "your_secret_key"
 
 st.set_page_config(page_title="Naver CLOVA STT Research", layout="wide")
 
@@ -130,6 +128,7 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
 
